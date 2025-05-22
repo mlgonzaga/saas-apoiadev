@@ -18,7 +18,7 @@ export function MobileMenu() {
           <span className="sr-only">Abrir menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[240px] sm:w-[300px]">
+      <SheetContent side="right" className="w-[240px] sm:w-[300px] p-5">
         <DialogTitle>
           Menu
         </DialogTitle>
@@ -41,8 +41,7 @@ export function MobileMenu() {
 
           <Button
             variant="ghost"
-            size="sm"
-            className="justify-start px-0 text-red-500 hover:text-red-600 hover:bg-transparent"
+            className="justify-start px-0 text-red-500 hover:text-red-600 hover:bg-transparent cursor-pointer"
           >
             <LogOut className="mr-2 h-4 w-4" />
             Sair
