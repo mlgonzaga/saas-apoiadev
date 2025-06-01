@@ -48,6 +48,7 @@ export function FormDonate({ creatorId, slug }: FormDonateProps) {
 
   async function onSubmit(data: FormData) {
     const priceInCents = Number(data.price) * 100;
+
     const checkout = await createPayment({
       name: data.name,
       message: data.message,
@@ -56,19 +57,33 @@ export function FormDonate({ creatorId, slug }: FormDonateProps) {
       price: priceInCents,
     });
 
+    await handlePaymentResponse(checkout);
+  }
+
+  async function handlePaymentResponse(checkout: {
+    sessionId?: string;
+    error?: string;
+  }) {
     if (checkout.error) {
       toast.error(checkout.error);
       return;
     }
 
-    if (checkout.data) {
-      const data = JSON.parse(checkout.data);
-
-      const stripe = await getStripeJs();
-      await stripe?.redirectToCheckout({
-        sessionId: data.id as string,
-      });
+    if (!checkout.sessionId) {
+      toast.error("Falha ai criar pagamento, tente mais tarde");
+      return;
     }
+
+    const stripe = await getStripeJs();
+
+    if (!stripe) {
+      toast.error("Falha ao criar o pagamento, tente mais tarde");
+      return;
+    }
+
+    await stripe?.redirectToCheckout({
+      sessionId: checkout.sessionId as string,
+    });
   }
   return (
     <Form {...form}>
