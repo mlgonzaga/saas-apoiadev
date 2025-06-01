@@ -22,6 +22,7 @@ model User {
   image         String?
   username      String?         @unique
   bio           String?
+  connectedStripeAccountId String?
   accounts      Account[]
   sessions      Session[]
   // Optional for WebAuthn support
@@ -37,6 +38,7 @@ model Donation {
   id        String @id @default(cuid())
   amount    Int // Em centavos
   donorName String // A mensagem da pessoa que fez a doação
+  donorMessage String? // A mensagem da pessoa que fez a doação
 
   userId String
 
