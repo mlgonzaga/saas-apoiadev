@@ -1,24 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Apoia Dev
 
-## Getting Started
+Apoia Dev is a modern web application built with Next.js, TypeScript, and Prisma, designed to provide a platform for developers to receive support and contributions.
 
-First, run the development server:
+## 🚀 Technologies
 
+- [Next.js 15](https://nextjs.org/)
+- [React 19](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prisma](https://www.prisma.io/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Stripe](https://stripe.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [React Query](https://tanstack.com/query/latest)
+- [Zod](https://zod.dev/)
+
+## 📦 Project Structure
+
+```
+apoia-dev/
+├── src/              # Source code
+├── public/           # Static files
+├── prisma/          # Database schema and migrations
+├── types/           # TypeScript type definitions
+├── .next/           # Next.js build output
+└── node_modules/    # Dependencies
+```
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn
+- PostgreSQL database
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd apoia-dev
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+Create a `.env` file in the root directory with the following variables:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+NEXTAUTH_SECRET="your-secret"
+NEXTAUTH_URL="http://localhost:3000"
+STRIPE_SECRET_KEY="your-stripe-secret-key"
+STRIPE_WEBHOOK_SECRET="your-stripe-webhook-secret"
+```
+
+4. Set up the database:
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+### Development
+
+Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run stripe:listen` - Listen to Stripe webhooks locally
+
+## 🔧 Features
+
+- Authentication with NextAuth.js
+- Database management with Prisma
+- Payment processing with Stripe
+- Modern UI with TailwindCSS
+- Form handling with React Hook Form
+- Type safety with TypeScript and Zod
+- State management with React Query
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Learn More
 
